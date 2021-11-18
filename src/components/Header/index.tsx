@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Header = () => <h1>CRUD</h1>;
+import { Container, Title } from './style';
+
+const Header = () => (
+  <Container>
+    <Title>Lista de clientes</Title>
+  </Container>
+);
 
 export default Header;
