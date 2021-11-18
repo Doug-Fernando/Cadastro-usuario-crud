@@ -1,5 +1,5 @@
 type Address = {
-  country: string;
+  state: string;
   street: string;
   district: string;
   city: string;

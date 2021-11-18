@@ -3,7 +3,7 @@
   "firstName": "John",
   "lastName": "Doe",
   "address": {
-    "country": "Brazil",
+    "state": "RJ",
     "district": "Azul",
     "city": "Rio de Janeiro",
     "street": "Av um",
@@ -17,7 +17,7 @@
   "firstName": "Jane",
   "lastName": "Doe",
   "address": {
-    "country": "Brazil",
+    "state": "PI",
     "district": "Verde",
     "city": "Teresina",
     "street": "Av dos mares",
