@@ -26,7 +26,7 @@ const EditUser = () => {
   };
   return (
     <Container>
-      <h3>Adicione um novo usuário</h3>
+      <h3>Editar dados do usuário</h3>
       {user
         && <UserForm user={user} submitButton={submitForm} buttonName="Salvar" />}
     </Container>
