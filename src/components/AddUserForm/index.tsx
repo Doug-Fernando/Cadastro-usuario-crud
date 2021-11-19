@@ -14,11 +14,11 @@ import { addNewUser } from '../../store/store';
 const AddUserForm = () => {
   const redirect = useNavigate();
   const dispatch = useAppDispatch();
-  const generateId = useAppSelector((state) => state.user.length + 1);
+  const users = useAppSelector((state) => state.user);
   const submitForm = async (values: any) => {
     await dispatch(addNewUser({
       user: {
-        id: generateId,
+        id: users.slice(-1)[0].id + 1,
         ...values,
       },
     }));
