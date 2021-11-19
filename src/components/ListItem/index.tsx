@@ -11,9 +11,9 @@ const ListItem = (
   }: ListItemType,
 ) => {
   const {
-    street, number, district, city, state,
+    street, district, city, state,
   } = address;
-  const fullAddress = `${street} ${number} - ${district}, ${city} - ${state}`;
+  const fullAddress = `${street} - ${district}, ${city} - ${state}`;
   return (
     <TableRow>
       <TableData>{id}</TableData>

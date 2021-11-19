@@ -3,13 +3,12 @@
   "firstName": "John",
   "lastName": "Doe",
   "address": {
-    "state": "RJ",
+    "street": "Av um 12",
     "district": "Azul",
     "city": "Rio de Janeiro",
-    "street": "Av um",
-    "number": "14"
+    "state": "RJ"
   },
-  "age": 19,
+  "age": "19",
   "cpf": "123.456.789-10"
 },
 {
@@ -17,11 +16,10 @@
   "firstName": "Jane",
   "lastName": "Doe",
   "address": {
-    "state": "PI",
+    "street": "Av dos mares 1422",
     "district": "Verde",
     "city": "Teresina",
-    "street": "Av dos mares",
-    "number": "1122"
+    "state": "PI"
   },
   "age": 25,
   "cpf": "109.876.543.21"

@@ -3,7 +3,6 @@ type Address = {
   street: string;
   district: string;
   city: string;
-  number: string | number;
 };
 
 export type ListItemType = {
