@@ -21,6 +21,7 @@ const userSchema = yup.object().shape({
 });
 
 export const userInitialValues = {
+  id: -1,
   firstName: '',
   lastName: '',
   address: {

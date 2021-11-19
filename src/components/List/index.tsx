@@ -1,15 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-
 import { Table } from 'react-bootstrap';
+
+import { useAppSelector } from '../../store/index';
 
 import ListHeader from '../ListHeader';
 import ListItem from '../ListItem';
 
-import { RootState } from '../../store/index';
-
 const List = () => {
-  const Users = useSelector((state: RootState) => state.user);
+  const Users = useAppSelector((state) => state.user);
   return (
     <Table striped bordered hover>
       <ListHeader />

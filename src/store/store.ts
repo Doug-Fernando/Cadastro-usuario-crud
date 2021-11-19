@@ -9,12 +9,16 @@ const user = createSlice({
     addNewUser: (
       state: any,
       action: PayloadAction<ListItemType>,
-    ) => [...state, action.payload.user],
+    ) => [...state, action.payload],
     deleteUser: (state: any, action: PayloadAction<number>) => (
       state.filter(({ id: userId }: any) => userId !== action.payload)),
+    editUser: (state: any, action: PayloadAction<ListItemType>) => {
+      const index = state.findIndex((data: ListItemType) => data.id === action.payload.id);
+      state[index] = action.payload;
+    },
   },
 });
 
-export const { addNewUser, deleteUser } = user.actions;
+export const { addNewUser, deleteUser, editUser } = user.actions;
 
 export default user.reducer;

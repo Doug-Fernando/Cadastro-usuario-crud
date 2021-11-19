@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Form, Button as ButtonBS } from 'react-bootstrap';
+import { Form as FormBS, Button as ButtonBS } from 'react-bootstrap';
 
-export const UserForm = styled(Form)`
+export const Form = styled(FormBS)`
   width: 50%;
   padding: 20px;
   margin-top: 20px;

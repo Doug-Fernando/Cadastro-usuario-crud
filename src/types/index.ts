@@ -6,12 +6,14 @@ type Address = {
 };
 
 export type ListItemType = {
-  user: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    address: Address;
-    age: string | number;
-    cpf: string
-  }
+  id: number;
+  firstName: string;
+  lastName: string;
+  address: Address;
+  age: string | number;
+  cpf: string
+};
+
+export type ListItemTypeProps = {
+  user: ListItemType
 };

@@ -4,7 +4,7 @@ import { Container, Title } from './style';
 
 const Header = () => (
   <Container>
-    <Title>Lista de clientes</Title>
+    <Title>Lista de usuários</Title>
   </Container>
 );
 

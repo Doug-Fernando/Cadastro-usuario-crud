@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../store';
 
 import { Button, TableData, TableRow } from './style';
 
-import { ListItemType } from '../../types/index';
+import { ListItemTypeProps } from '../../types/index';
 import { deleteUser } from '../../store/store';
 
 const ListItem = (
@@ -11,7 +12,7 @@ const ListItem = (
     user: {
       id, firstName, lastName, age, cpf, address,
     },
-  }: ListItemType,
+  }: ListItemTypeProps,
 ) => {
   const {
     street, district, city, state,
@@ -27,7 +28,7 @@ const ListItem = (
       <TableData>{cpf}</TableData>
       <TableData>{fullAddress}</TableData>
       <TableData>
-        <Button variant="primary">Editar</Button>
+        <Link to={`/editar/${id}`}><Button variant="primary">Editar </Button></Link>
         <Button variant="danger" onClick={() => dispatch(deleteUser(id))}>Excluir</Button>
       </TableData>
     </TableRow>

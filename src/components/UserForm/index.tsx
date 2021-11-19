@@ -3,46 +3,40 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 
 import { Row, Col } from 'react-bootstrap';
-import { useAppDispatch, useAppSelector } from '../../store';
 
-import AddUserFormGroup from '../AddUserFormGroup';
-import { UserForm, Button, ButtonGroup } from './style';
+import UserFormGroup from '../UserFormGroup';
+import { Form, Button, ButtonGroup } from './style';
 
-import userSchema, { userInitialValues } from '../../schema/userSchema';
-import { addNewUser } from '../../store/store';
+import userSchema from '../../schema/userSchema';
 
-const AddUserForm = () => {
+import { ListItemType } from '../../types';
+
+interface Props {
+  user: ListItemType,
+  submitButton: (data: ListItemType) => void;
+  buttonName: string;
+}
+
+const UserForm = ({ user, submitButton, buttonName }: Props) => {
   const redirect = useNavigate();
-  const dispatch = useAppDispatch();
-  const users = useAppSelector((state) => state.user);
-  const submitForm = async (values: any) => {
-    await dispatch(addNewUser({
-      user: {
-        id: users.slice(-1)[0].id + 1,
-        ...values,
-      },
-    }));
-    alert('Usuário cadastrado com sucesso!');
-    redirect('/');
-  };
   return (
     <Formik
       validationSchema={userSchema}
-      onSubmit={(values) => submitForm(values)}
-      initialValues={userInitialValues}
+      onSubmit={(values) => submitButton(values)}
+      initialValues={user}
     >
       {({ handleSubmit }) => (
-        <UserForm noValidate onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={handleSubmit}>
           <Row>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="firstName"
                 type="text"
                 label="Nome"
               />
             </Col>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="lastName"
                 type="text"
                 label="Sobrenome"
@@ -51,14 +45,14 @@ const AddUserForm = () => {
           </Row>
           <Row>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="age"
                 type="number"
                 label="Idade"
               />
             </Col>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="address.district"
                 type="text"
                 label="Bairro"
@@ -67,7 +61,7 @@ const AddUserForm = () => {
           </Row>
           <Row>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="address.street"
                 type="text"
                 label="Endereço"
@@ -76,14 +70,14 @@ const AddUserForm = () => {
           </Row>
           <Row>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="address.city"
                 type="text"
                 label="Cidade"
               />
             </Col>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="address.state"
                 type="select"
                 label="Estado"
@@ -92,7 +86,7 @@ const AddUserForm = () => {
           </Row>
           <Row>
             <Col>
-              <AddUserFormGroup
+              <UserFormGroup
                 name="cpf"
                 type="text"
                 placeholder="Ex: 000.000.000-00"
@@ -105,7 +99,7 @@ const AddUserForm = () => {
               variant="success"
               type="submit"
             >
-              Adicionar novo usuário
+              {buttonName}
             </Button>
             <Button
               variant="dark"
@@ -115,10 +109,10 @@ const AddUserForm = () => {
               Voltar
             </Button>
           </ButtonGroup>
-        </UserForm>
+        </Form>
       )}
     </Formik>
   );
 };
 
-export default AddUserForm;
+export default UserForm;
