@@ -3,18 +3,32 @@ import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 
 import { Row, Col } from 'react-bootstrap';
+import { useAppDispatch, useAppSelector } from '../../store';
 
 import AddUserFormGroup from '../AddUserFormGroup';
 import { UserForm, Button, ButtonGroup } from './style';
 
 import userSchema, { userInitialValues } from '../../schema/userSchema';
+import { addNewUser } from '../../store/store';
 
 const AddUserForm = () => {
   const redirect = useNavigate();
+  const dispatch = useAppDispatch();
+  const generateId = useAppSelector((state) => state.user.length + 1);
+  const submitForm = async (values: any) => {
+    await dispatch(addNewUser({
+      user: {
+        id: generateId,
+        ...values,
+      },
+    }));
+    alert('Usuário cadastrado com sucesso!');
+    redirect('/');
+  };
   return (
     <Formik
       validationSchema={userSchema}
-      onSubmit={() => console.log('submit')}
+      onSubmit={(values) => submitForm(values)}
       initialValues={userInitialValues}
     >
       {({ handleSubmit }) => (

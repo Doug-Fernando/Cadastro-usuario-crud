@@ -1,16 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
-import Users from '../mock/user.json';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import userMock from '../mock/user';
+import { ListItemType } from '../types';
 
 const user = createSlice({
   name: 'users',
-  initialState: Users,
+  initialState: userMock,
   reducers: {
-    increment(state) {
-      return state;
-    },
+    addNewUser: (
+      state: any,
+      action: PayloadAction<ListItemType>,
+    ) => [...state, action.payload.user],
   },
 });
 
-export const { increment } = user.actions;
+export const { addNewUser } = user.actions;
 
 export default user.reducer;

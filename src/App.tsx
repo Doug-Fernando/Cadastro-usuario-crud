@@ -9,7 +9,7 @@ import AddUser from './pages/AddUser';
 const App = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/novo" element={<AddUser />} />
+    <Route path="/cadastrar" element={<AddUser />} />
   </Routes>
 );
 
