@@ -7,7 +7,6 @@ import UserForm from '../../components/UserForm';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { editUser } from '../../store/store';
-import { userInitialValues } from '../../schema/userSchema';
 import { ListItemType } from '../../types';
 
 const EditUser = () => {
@@ -20,8 +19,6 @@ const EditUser = () => {
   useEffect(() => {
     setUser(users.find((data) => data.id === Number(paramId)));
   }, []);
-  console.log(user);
-  console.log(userInitialValues);
   const submitForm = async (values: ListItemType) => {
     await dispatch(editUser(values));
     alert('Dados atualizados com sucesso!');
