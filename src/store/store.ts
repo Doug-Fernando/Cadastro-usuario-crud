@@ -1,24 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import userMock from '../mock/user';
 import { ListItemType } from '../types';
 
 const user = createSlice({
   name: 'users',
-  initialState: userMock,
+  initialState: [] as ListItemType[],
   reducers: {
+    saveInState: (
+      state: ListItemType[],
+      action: PayloadAction<ListItemType[]>,
+    ): any => action.payload,
     addNewUser: (
-      state: any,
+      state: ListItemType[],
       action: PayloadAction<ListItemType>,
-    ) => [...state, action.payload],
-    deleteUser: (state: any, action: PayloadAction<number>) => (
-      state.filter(({ id: userId }: any) => userId !== action.payload)),
-    editUser: (state: any, action: PayloadAction<ListItemType>) => {
+    ): ListItemType[] => [...state, action.payload],
+    deleteUser: (state: ListItemType[], action: PayloadAction<number>) => (
+      state.filter(({ id: userId }: ListItemType) => userId !== action.payload)),
+    editUser: (state: ListItemType[], action: PayloadAction<ListItemType>) => {
       const index = state.findIndex((data: ListItemType) => data.id === action.payload.id);
       state[index] = action.payload;
     },
   },
 });
 
-export const { addNewUser, deleteUser, editUser } = user.actions;
+export const {
+  addNewUser, deleteUser, editUser, saveInState,
+} = user.actions;
 
 export default user.reducer;

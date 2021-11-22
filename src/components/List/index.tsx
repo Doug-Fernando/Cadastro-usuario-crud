@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 
-import { useAppSelector } from '../../store/index';
+import API from '../../api/users';
+import { saveInState } from '../../store/store';
+
+import { ListItemType } from '../../types';
+
+import { useAppDispatch, useAppSelector } from '../../store/index';
 
 import ListHeader from '../ListHeader';
 import ListItem from '../ListItem';
 
+import LoadAnimation from './styled';
+
 const List = () => {
-  const Users = useAppSelector((state) => state.user);
-  return (
+  const [users, setUsers] = useState<ListItemType[]>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const getUsersState = useAppSelector((state) => state.user);
+  useEffect(() => {
+    setLoading(true);
+    API.getAllUsers().then((data: any) => {
+      if (getUsersState.length < 1) {
+        setUsers(data);
+        dispatch(saveInState(data));
+        setLoading(false);
+        return;
+      }
+      setUsers(getUsersState);
+      setLoading(false);
+    });
+  }, [getUsersState]);
+
+  return loading ? <LoadAnimation /> : (
     <Table striped bordered hover>
       <ListHeader />
       <tbody>
-        {Users.map((user) => <ListItem key={user.id} user={user} />)}
+        {users && users.map((user: ListItemType) => <ListItem key={user.id} user={user} />)}
       </tbody>
     </Table>
   );
