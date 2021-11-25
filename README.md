@@ -1,6 +1,6 @@
 # Cadastro de usuários ( CRUD )
 Projeto feito em typescript, redux para manipular o estado e hooks.  
-Estou aprendendo typescript, por esse motvio existem algumas variáveis e propriedades,provavelmente, não estão devidamente tipadas.
+Estou aprendendo typescript, por esse motvio existem algumas variáveis e propriedades não estão devidamente tipadas.
 
 ## Como rodar
 1. clone o repositório: `git clone git@github.com:Doug-Fernando/Cadastro-usuario-crud.git`
