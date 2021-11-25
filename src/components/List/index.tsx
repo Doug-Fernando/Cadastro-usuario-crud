@@ -32,7 +32,7 @@ const List = () => {
     });
   }, [getUsersState]);
 
-  return loading ? <LoadAnimation /> : (
+  return loading ? <LoadAnimation data-testid="loading-animation" /> : (
     <Table striped bordered hover>
       <ListHeader />
       <tbody>

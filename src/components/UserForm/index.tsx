@@ -26,7 +26,7 @@ const UserForm = ({ user, submitButton, buttonName }: Props) => {
       initialValues={user}
     >
       {({ handleSubmit }) => (
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={handleSubmit} name="form">
           <Row>
             <Col>
               <UserFormGroup
